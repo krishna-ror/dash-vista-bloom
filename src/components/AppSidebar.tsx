@@ -32,7 +32,7 @@ const items = [
 export function AppSidebar() {
   const { state } = useSidebar();
   const collapsed = state === "collapsed";
-  const location = useLocation();
+  
 
   return (
     <Sidebar collapsible="icon" className="border-r border-sidebar-border">

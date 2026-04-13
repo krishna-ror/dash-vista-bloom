@@ -1,8 +1,8 @@
 import { useApp } from "@/contexts/AppContext";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { TrendingUp, Users, DollarSign, AlertTriangle, BarChart3, Target } from "lucide-react";
-import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, RadialBarChart, RadialBar } from "recharts";
+import { TrendingUp, Users, DollarSign, AlertTriangle, Target } from "lucide-react";
+import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts";
 
 const performanceData = [
   { month: "Jan", revenue: 180000, expenses: 140000 },
