@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { TrendingUp, BarChart3, Users, Shield } from "lucide-react";
+import { TrendingUp, BarChart3, Users, Shield, ArrowRight, CheckCircle2 } from "lucide-react";
 
 const Login = () => {
   const { setRole, setCountry, setIsLoggedIn, country } = useApp();
@@ -22,45 +22,60 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen flex">
+    <div className="min-h-screen flex bg-background">
       {/* Left - Branding */}
-      <div className="hidden lg:flex lg:w-1/2 gradient-primary relative overflow-hidden items-center justify-center p-12">
-        <div className="absolute inset-0 opacity-10">
-          {[...Array(6)].map((_, i) => (
-            <div
-              key={i}
-              className="absolute rounded-full border border-white/20"
-              style={{
-                width: `${200 + i * 120}px`,
-                height: `${200 + i * 120}px`,
-                top: "50%",
-                left: "50%",
-                transform: "translate(-50%, -50%)",
-              }}
-            />
-          ))}
+      <div className="hidden lg:flex lg:w-1/2 gradient-hero relative overflow-hidden items-center justify-center p-12">
+        {/* Decorative elements */}
+        <div className="absolute inset-0 opacity-[0.07]">
+          <div className="absolute inset-0" style={{
+            backgroundImage: 'radial-gradient(circle at 1px 1px, white 1px, transparent 0)',
+            backgroundSize: '32px 32px',
+          }} />
         </div>
-        <div className="relative z-10 text-center space-y-8 max-w-md">
-          <div className="w-20 h-20 rounded-2xl bg-white/20 backdrop-blur-sm flex items-center justify-center mx-auto">
-            <BarChart3 className="w-10 h-10 text-white" />
+        <div className="absolute -top-32 -right-32 w-96 h-96 rounded-full bg-primary-glow/20 blur-3xl" />
+        <div className="absolute -bottom-32 -left-32 w-96 h-96 rounded-full bg-gold/10 blur-3xl" />
+
+        <div className="relative z-10 max-w-md space-y-10">
+          <div className="flex items-center gap-3">
+            <div className="w-12 h-12 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center">
+              <BarChart3 className="w-6 h-6 text-white" />
+            </div>
+            <div>
+              <h2 className="font-display font-bold text-xl text-white">FinHR Suite</h2>
+              <p className="text-white/50 text-xs uppercase tracking-widest">Enterprise Edition</p>
+            </div>
           </div>
-          <h1 className="text-4xl font-bold text-white leading-tight">
-            Finance & HR
-            <br />
-            Management Suite
-          </h1>
-          <p className="text-white/70 text-lg">
-            Streamline your company's financial operations and human resources with a unified platform.
-          </p>
-          <div className="flex gap-4 justify-center pt-4">
+
+          <div className="space-y-5">
+            <h1 className="font-display text-5xl font-bold text-white leading-[1.1] tracking-tight">
+              Run finance & people ops, beautifully.
+            </h1>
+            <p className="text-white/70 text-lg leading-relaxed">
+              The trusted platform for modern teams to manage payroll, expenses, and employees — all in one elegant workspace.
+            </p>
+          </div>
+
+          <div className="space-y-3 pt-2">
+            {[
+              "Real-time P&L and expense tracking",
+              "End-to-end employee lifecycle management",
+              "Multi-currency support across regions",
+            ].map((feature) => (
+              <div key={feature} className="flex items-center gap-3 text-white/80 text-sm">
+                <CheckCircle2 className="w-4 h-4 text-gold shrink-0" />
+                {feature}
+              </div>
+            ))}
+          </div>
+
+          <div className="flex items-center gap-6 pt-6 border-t border-white/10">
             {[
               { icon: TrendingUp, label: "Finance" },
               { icon: Users, label: "HR" },
-              { icon: Shield, label: "Security" },
+              { icon: Shield, label: "Secure" },
             ].map(({ icon: Icon, label }) => (
-              <div key={label} className="flex flex-col items-center gap-2 bg-white/10 backdrop-blur-sm rounded-xl p-4 w-24">
-                <Icon className="w-6 h-6 text-white" />
-                <span className="text-white/80 text-xs font-medium">{label}</span>
+              <div key={label} className="flex items-center gap-2 text-white/60 text-xs">
+                <Icon className="w-4 h-4" /> {label}
               </div>
             ))}
           </div>
@@ -68,52 +83,56 @@ const Login = () => {
       </div>
 
       {/* Right - Form */}
-      <div className="flex-1 flex items-center justify-center p-8 bg-background">
-        <div className="w-full max-w-md space-y-8">
+      <div className="flex-1 flex items-center justify-center p-6 sm:p-12 relative">
+        <div className="absolute inset-0 grid-bg opacity-50 pointer-events-none" />
+        <div className="w-full max-w-md space-y-8 relative animate-slide-up">
           <div className="space-y-2">
             <div className="lg:hidden flex items-center gap-2 mb-6">
               <div className="w-10 h-10 rounded-xl gradient-primary flex items-center justify-center">
                 <BarChart3 className="w-5 h-5 text-white" />
               </div>
-              <span className="font-bold text-xl text-foreground">FinHR Suite</span>
+              <span className="font-display font-bold text-xl text-foreground">FinHR Suite</span>
             </div>
-            <h2 className="text-3xl font-bold text-foreground">Welcome back</h2>
-            <p className="text-muted-foreground">Sign in to your account to continue</p>
+            <h2 className="font-display text-3xl font-bold text-foreground tracking-tight">Welcome back</h2>
+            <p className="text-muted-foreground">Sign in to your workspace to continue</p>
           </div>
 
           <form onSubmit={handleLogin} className="space-y-5">
             <div className="space-y-2">
-              <Label htmlFor="email">Email</Label>
+              <Label htmlFor="email" className="text-xs font-medium uppercase tracking-wider text-muted-foreground">Email</Label>
               <Input
                 id="email"
                 type="email"
                 placeholder="you@company.com"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="h-11"
+                className="h-11 bg-card"
               />
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="password">Password</Label>
+              <div className="flex items-center justify-between">
+                <Label htmlFor="password" className="text-xs font-medium uppercase tracking-wider text-muted-foreground">Password</Label>
+                <button type="button" className="text-xs text-primary hover:underline">Forgot?</button>
+              </div>
               <Input
                 id="password"
                 type="password"
                 placeholder="••••••••"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="h-11"
+                className="h-11 bg-card"
               />
             </div>
 
             <div className="grid grid-cols-2 gap-3">
               <div className="space-y-2">
-                <Label>Country</Label>
+                <Label className="text-xs font-medium uppercase tracking-wider text-muted-foreground">Country</Label>
                 <Select
                   value={country.code}
                   onValueChange={(v) => setCountry(countries.find((c) => c.code === v)!)}
                 >
-                  <SelectTrigger className="h-11">
+                  <SelectTrigger className="h-11 bg-card">
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
@@ -127,9 +146,9 @@ const Login = () => {
               </div>
 
               <div className="space-y-2">
-                <Label>Role</Label>
+                <Label className="text-xs font-medium uppercase tracking-wider text-muted-foreground">Role</Label>
                 <Select value={selectedRole} onValueChange={(v) => setSelectedRole(v as Role)}>
-                  <SelectTrigger className="h-11">
+                  <SelectTrigger className="h-11 bg-card">
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
@@ -141,12 +160,13 @@ const Login = () => {
               </div>
             </div>
 
-            <Button type="submit" className="w-full h-11 gradient-primary text-white font-semibold text-base hover:opacity-90 transition-opacity">
-              Sign In
+            <Button type="submit" className="w-full h-11 gradient-primary text-primary-foreground font-semibold text-sm hover:opacity-95 hover-lift group">
+              Sign In to Dashboard
+              <ArrowRight className="w-4 h-4 ml-1 transition-transform group-hover:translate-x-0.5" />
             </Button>
 
-            <p className="text-center text-sm text-muted-foreground">
-              Demo mode — enter any credentials
+            <p className="text-center text-xs text-muted-foreground">
+              Demo mode — enter any credentials to continue
             </p>
           </form>
         </div>
