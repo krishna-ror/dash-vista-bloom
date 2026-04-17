@@ -1,7 +1,7 @@
 import { useApp } from "@/contexts/AppContext";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { TrendingUp, Users, DollarSign, AlertTriangle, Target, Briefcase, ArrowUpRight, Activity } from "lucide-react";
+import { TrendingUp, Users, DollarSign, AlertTriangle, Briefcase, ArrowUpRight, Activity } from "lucide-react";
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts";
 
 const performanceData = [
